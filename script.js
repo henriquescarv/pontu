@@ -18,9 +18,8 @@ for (var index = 0; index < 60; index++) {
   minuteElement.appendChild(option);
 }
 
-let alarmTime, isAlarmSet, ringTone = new Audio("https://www.soundjay.com/button/beep-07.wav");
-
-console.log(alarmTime)
+// let alarmTime, isAlarmSet, ringTone = new Audio("https://www.soundjay.com/button/beep-07.wav");
+let alarmTime = null;
 
 let hours = null;
 let minutes = null;
@@ -29,15 +28,24 @@ var date = new Date();
 var currentHours = date.getHours();
 var currentMinutes = date.getMinutes();
 
-if (alarmTime === `${hours}:${minutes}`) {
-  ringTone.play();
-  ringTone.loop = true;
-}
+
+setInterval(() => {
+  if (alarmTime === `${currentHours}:${currentMinutes}`) {
+    var alert = document.createElement("alarmAlert");
+    alert.innerText = 'ALARM TIME!';
+    document.body.appendChild(alert);
+    
+    // ringTone.play();
+    // ringTone.loop = true;
+  }
+}, 1000)
 
 function setAlarm() {
   hours = document.getElementById("hour").value;
   minutes = document.getElementById("minute").value;
-
+  
   alarmTime = `${hours}:${minutes}`;
-  isAlarmSet = true;
+  console.log('alarm setted to ' + alarmTime);
 }
+
+document.getElementById("setAlarmButton").addEventListener("click", setAlarm);
