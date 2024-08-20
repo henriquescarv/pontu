@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Pontu",
+  "version": "1.0",
+  "description": "Alarmes para o seu dia a dia",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "index.html"
+  }
+}
